@@ -1,0 +1,21 @@
+.light-theme {
+  background: #e8f8f5;
+  color: #000;
+}
+
+.light-theme .auth-box,
+.light-theme .control-box,
+.light-theme .game-header,
+.light-theme #profile {
+  background: #ffffff;
+  color: #000;
+}
+
+.light-theme a {
+  color: #0b5345;
+}
+
+.dark-theme {
+  background: #0b3d2e;
+  color: #ffffff;
+}

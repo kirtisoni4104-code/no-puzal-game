@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile</title>
+
+  <!-- ✅ Viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/profile.css">
+</head>
+<body>
+
+  <h1>👤 My Profile</h1>
+
+  <div id="profile" aria-live="polite">
+    Loading profile...
+  </div>
+
+  <a href="puzzle.html">⬅ Back to Game</a>
+
+  <script>
+    fetch("../php/get_user_profile.php")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("profile").innerHTML = data;
+      });
+  </script>
+
+</body>
+</html>

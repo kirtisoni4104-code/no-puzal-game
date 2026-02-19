@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sliding Puzzle Game</title>
+
+  <!-- ✅ Viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/game.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/theme.css">
+</head>
+
+<body class="light-theme">
+
+  <header class="game-header">
+    <h1>🧩 Sliding Puzzle Game</h1>
+    <button id="themeToggle" aria-label="Toggle theme">🌙</button>
+  </header>
+
+  <section class="controls">
+
+    <div class="control-box">
+      <label for="difficulty">Difficulty</label>
+      <select id="difficulty" name="difficulty" title="Select puzzle difficulty">
+        <option value="3">Easy (3×3)</option>
+        <option value="4">Medium (4×4)</option>
+        <option value="5">Hard (5×5)</option>
+      </select>
+    </div>
+
+    <div class="control-box">
+      ⏱ Time: <span id="timer">00:00</span>
+    </div>
+
+    <div class="control-box">
+      🎯 Moves: <span id="moves">0</span>
+    </div>
+
+  </section>
+
+  <main class="game-container">
+    <div id="game" aria-label="Puzzle board"></div>
+  </main>
+
+  <section class="actions">
+    <button onclick="shuffle()">🔀 Shuffle</button>
+    <button onclick="restartGame()">🔁 Restart</button>
+    <a href="dashboard.html">🏆 Leaderboard</a>
+    <a href="profile.html">👤 Profile</a>
+  </section>
+
+  <footer>
+    <p>© 2026 Puzzle Game Project</p>
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/puzzle.js"></script>
+
+  <script>
+    let seconds = 0;
+    let timer;
+
+    function startTimer() {
+      clearInterval(timer);
+      seconds = 0;
+      timer = setInterval(() => {
+        seconds++;
+        const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+        const s = String(seconds % 60).padStart(2, '0');
+        document.getElementById("timer").textContent = `${m}:${s}`;
+      }, 1000);
+    }
+
+    function restartGame() {
+      startTimer();
+      shuffle();
+    }
+
+    startTimer();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Leaderboard</title>
+
+  <!-- ✅ Viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+  <h1>🏆 Leaderboard</h1>
+
+  <div id="leaderboard" aria-live="polite">Loading scores...</div>
+
+  <a href="puzzle.html">⬅ Back to Game</a>
+
+  <script>
+    fetch("../php/get_scores.php")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("leaderboard").innerHTML = data;
+      });
+  </script>
+
+</body>
+</html>
